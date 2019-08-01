@@ -40,3 +40,12 @@ class Example(models.Model):
 
     def __str__(self):
         return self.sentence
+
+class Dialect(models.Model):
+    standard = models.CharField(max_length=255)
+    jeju = models.CharField(max_length=255)
+
+    def regist_word(self, standard, jeju):
+        self.standard = standard
+        self.jeju = jeju
+        self.save()
