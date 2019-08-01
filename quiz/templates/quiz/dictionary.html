@@ -2,4 +2,17 @@
 
 {% block content %}
   <p>제주 방언 사전입니다.</p>
+  <form action="{% url 'dictionary' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="자료 업데이트">
+  </form>
+  <div class="content container">
+    <div class="row">
+      <div class="col-md-8">
+        {% for dialect in dialects %}
+          <p>{{ dialect.standard }} - {{ dialect.jeju }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 {% endblock %}

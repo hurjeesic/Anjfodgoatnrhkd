@@ -49,3 +49,6 @@ class Dialect(models.Model):
         self.standard = standard
         self.jeju = jeju
         self.save()
+
+    def __str__():
+        return jeju
