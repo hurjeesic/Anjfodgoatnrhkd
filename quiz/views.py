@@ -32,7 +32,7 @@ def dictionary(request):
 
         return redirect('index')
 
-    dialects = Dialect.objects.all().order_by('standard')
+    dialects = Dialect.objects.all() # .order_by('standard')
 
     return render(request, 'quiz/dictionary.html', {'dialects': dialects})
 

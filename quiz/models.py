@@ -50,5 +50,5 @@ class Dialect(models.Model):
         self.jeju = jeju
         self.save()
 
-    def __str__():
-        return jeju
+    def __str__(self):
+        return self.jeju
