@@ -1,24 +1,19 @@
 {% extends 'quiz/base.html' %}
+{% load static %}
 
 {% block content %}
-  <div class="page_header">
-    <h1><a href="">전체 공지</a></h1>
+  <div class="wrap">
+    <div class="page_header">
+      뭐랭햄수광
+    </div>
+    <!-- https://notefolio.net/pucoroom/84242 -->
+    <img src="{% static 'image/jeju.jpg' %}">
+
+    <div class="buttons">
+      <a class="abc" href="{% url 'quiz' %}"><img src="{% static 'image/quiz.png' %}"></a>
+      <a class="abc" href="{% url 'dictionary' %}"><img src="{% static 'image/사전.jpg' %}"></a>
+      <a class="abc" href="{% url 'help' %}"><img src="{% static 'image/도움말.png' %}"></a>
+    </div>
   </div>
 
-  <div class="post">
-    <p>2019년 07월 31일 05:14</p>
-    <h2><a href="">1번째 공지</a></h2>
-    <p>아직 개발 중입니다. 그래서 기능도 디자인도 없습니다.</p>
-  </div>
-  <hr>
-  <div class="post">
-    <p>2019년 07월 31일 05:20</p>
-    <h2>2번째 공지</h2>
-    <p>그럼에도 방문한 당신은 도대체..</p>
-  </div>
-  <hr>
-
-  <h2><a href="{% url 'quiz' %}">문제 풀기</a></h2>
-  <h2><a href="{% url 'dictionary' %}">제주 방언 사전</a></h2>
-  <h2><a href="{% url 'help' %}">도움말</a></h2>
 {% endblock %}
