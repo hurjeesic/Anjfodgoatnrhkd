@@ -1,8 +1,16 @@
+@font-face { font-family: 'YunTaemin'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/YunTaemin.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'BRRA_R'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/BRRA_R.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+* {
+  font-family: 'BRRA_R';
+}
+
 .page_header {
-    margin-top: 45px;
+    margin-top: 30px;
     padding: 20px 20px 20px 40px;
     text-align: center;
-    font-size: 45px;
+    font-size: 90px;
+    font-family: 'YunTaemin';
 }
 
 .abc > img {
