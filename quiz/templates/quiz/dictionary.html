@@ -3,32 +3,34 @@
 
 {% block header %}
   <meta name="viewport" content="width = 1050, user-scalable = no" />
-  <style>.on{color:#ff0000;}</style>
+  <style>
+    .on {color:#ff0000;}
+    .words {
+      padding: 20px;
+      padding-top: 30px;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
-  <p>제주 방언 사전입니다.</p>
+  <!-- <p>제주 방언 사전입니다.</p>
   <form action="{% url 'dictionary' %}" method="post">
     {% csrf_token %}
     <input type="submit" value="자료 업데이트">
-  </form>
-  <div class="content container">
-    <div class="row">
-      <div class="col-md-8">
-        {% for dialect in dialects %}
-          <p>{{ dialect.standard }} - {{ dialect.jeju }}</p>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+  </form> -->
 
   <div class="flipbook-viewport">
   	<div class="container">
   		<div class="flipbook">
   			<div style="background-image:url({% static 'image/돌하르방.jpg' %})"></div>
-  			<div>WKKWKWKWKWKWKWK</div>
-  			<div>SKSJKSJSJSJSJKSKSKSKS</div>
-  			<div>DGDSGFDGDFGSFDGSD</div>
+        {% for dialect in dialects %}
+          <div class="words">
+            <h1>표준어 - 제주 방언</h1>
+            {% for data in dialect %}
+              <p>{{ data.standard }} - {{ data.jeju }}</p>
+            {% endfor %}
+          </div>
+        {% endfor %}
   		</div>
   	</div>
   </div>
