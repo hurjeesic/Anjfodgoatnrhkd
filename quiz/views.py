@@ -43,6 +43,8 @@ def quiz(request):
 
     return render(request, 'quiz/quiz.html', {'problems': lst})
 
+# request 사용법
+# https://victorydntmd.tistory.com/260
 def result(request):
     score = 0
     for num in range(1, problem_num + 1):
