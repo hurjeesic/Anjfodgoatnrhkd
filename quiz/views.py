@@ -4,6 +4,9 @@ from django.utils import timezone
 from .models import Example
 from .models import Dialect
 from . import function
+import random
+
+problem_num = 20
 
 # Create your views here.
 def index(request):
@@ -22,7 +25,34 @@ def quiz(request):
     # examples = Example.objects.all().order_by('sentence')
     dialects = Dialect.objects.all()
 
-    return render(request, 'quiz/quiz.html', {'dialects': dialects})
+    count = 0
+    lst = set()
+    while len(lst) < problem_num:
+        lst.add(random.randrange(0, len(dialects)))
+
+    lst = list(lst)
+
+    problems = []
+    for num in range(problem_num):
+        answer_num = random.randrange(1, 5)
+        word = dialects[lst[num]]
+        lst[num] = { 'num': num + 1, 'problem': word.jeju, 'answer_num': answer_num }
+        for i in range(1, 5):
+            if i == answer_num: lst[num][str(i)] = word.standard
+            lst[num][str(i)] = dialects[random.randrange(0, len(dialects))].standard
+
+    return render(request, 'quiz/quiz.html', {'problems': lst})
+
+def result(request):
+    score = 0
+    for num in range(1, problem_num + 1):
+        try:
+            if request.POST['p.' + str(num)] == request.POST['a.' + str(num)]:
+                score += 100 / problem_num
+        except KeyError:
+            pass
+
+    return render(request, 'quiz/result.html', { 'score': str(score) })
 
 def dictionary(request):
     # if request.method == "POST":

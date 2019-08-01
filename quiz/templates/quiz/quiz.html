@@ -1,17 +1,28 @@
 {% extends 'quiz/base.html' %}
 
 {% block content %}
-  <p>이곳에 퀴즈가 나올 예정입니다.</p>
-  <form action="{% url 'quiz' %}" method="post">
+  <!-- <form action="{% url 'quiz' %}" method="post">
     {% csrf_token %}
     <input type="submit" value="자료 업데이트">
-  </form>
+  </form> -->
   <div class="content container">
     <div class="row">
       <div class="col-md-8">
-        {% for dialect in dialects %}
-          <p>{{ dialect.standard }}</p>
-        {% endfor %}
+        <h1><p>다음 제주 방언과 맞는 것을 고르시오.</p></h1>
+        <form action="{% url 'result' %}" method="post">
+          {% csrf_token %}
+          {% for problem in problems %}
+            <h4><p>{{ problem.num }}. {{ problem.problem }}</p></h4>
+            <ol>
+              <li><input type="radio" name="p.{{ problem.num }}" value="1">{{ problem.1 }}</li>
+              <li><input type="radio" name="p.{{ problem.num }}" value="2">{{ problem.2 }}</li>
+              <li><input type="radio" name="p.{{ problem.num }}" value="3">{{ problem.3 }}</li>
+              <li><input type="radio" name="p.{{ problem.num }}" value="4">{{ problem.4 }}</li>
+            </ol>
+            <input type="hidden" name="a.{{ problem.num }}" value="{{ problem.answer_num }}"><br>
+          {% endfor %}
+          <input type="submit" value="제출">
+        </form>
       </div>
     </div>
   </div>
