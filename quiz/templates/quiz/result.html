@@ -1,13 +1,10 @@
 {% extends 'quiz/base.html' %}
 
 {% block content %}
-  <p>이곳에 결과가 나올 예정입니다.</p>
-  <div class="content container">
-    <div class="row">
-      <div class="col-md-8">
-        점수 : {{ score }}
-        <input type="button" value="처음으로" onclick="location.href='{% url 'index' %}'">
-      </div>
-    </div>
+  <div class="score">
+    {{ score }} 점
+  </div>
+  <div class="first-btn">
+    <input type="button" value="처음으로" onclick="location.href='{% url 'index' %}'">
   </div>
 {% endblock %}
