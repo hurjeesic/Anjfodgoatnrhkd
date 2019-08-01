@@ -27,7 +27,7 @@ def dialect_parsing():
                     dialect_lst.append({'standard': standard, 'jeju': jeju})
 
         else:
-            # print("Error Code:" + response.status_code)
+            dialect_lst.append({'standard': "Error Code:{0}".format(response.status_code), 'jeju': ''})
             break
 
         page += 1
@@ -53,7 +53,7 @@ def proverb_parsing():
             for tag in content_tags:
                 proverb_lst.append(tag.contents[0])
         else:
-            # print("Error Code:" + response.status_code)
+            proverb_lst.append("Error Code:{0}".format(response.status_code))
             break
 
         index += 1
