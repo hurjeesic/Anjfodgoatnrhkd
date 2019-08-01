@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.1.7.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/modernizr.2.5.3.min.js' %}"></script>
+    {% block header %}
+    {% endblock %}
   </head>
-  <body>
+  <body style="background:url({% static 'image/bg.jpg' %}) repeat">
     {% block content %}
     {% endblock %}
   </body>
