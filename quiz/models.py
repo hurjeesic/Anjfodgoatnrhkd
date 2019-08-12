@@ -3,11 +3,11 @@ from django.utils import timezone
 
 # Create your models here.
 class SensorData(models.Model):
-    soilTemp = models.FloatField(default=-40.0)
-    soilHumid = models.FloatField(default=0.0)
-    waterTemp = models.FloatField(default=-1000.0)
+    AT = models.FloatField(default=-40.0)
+    H = models.FloatField(default=0.0)
+    WT = models.FloatField(default=-1000.0)
     PH = models.FloatField(default=0.0)
-    voltage = models.FloatField(default=0.0)
+    V = models.FloatField(default=0.0)
     def __str__(self):
         return str(self.soilTemp)
 
