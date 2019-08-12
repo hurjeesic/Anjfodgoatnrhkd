@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Example
 from .models import Dialect
+from .forms import SensorForm
 from . import function
 import random
 
@@ -13,17 +14,14 @@ def temp(request):
     # AT, H, WT, PH, V
     sensor = { 'soilTemp' : request.POST.get('AT', '-40'), 'soilHumid' : request.POST.get('H', '0'), 'waterTemp' : request.POST.get('WT', '-1000'), 'PH' : request.POST.get('PH', '0'), 'voltage' : request.POST.get('V', '0') }
 
-    try:
-        migrationData = SensorData(soilTemp=int(sensor['soilTemp']),
-                                   soilHumid=int(sensor['soilHumid']),
-                                   waterTemp=int(sensor['waterTemp']),
-                                   PH=int(sensor['PH']),
-                                   voltage=int(sensor['voltage']))
-        migrationData.save()
-    except:
-        pass
+    if request.method == "POST":
+        form = SensorForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = SensorForm()
 
-    return render(request, 'quiz/add.html', {})
+    return render(request, 'quiz/add.html', { 'sensor': sensor})
 
 def index(request):
     return render(request, 'quiz/index.html', {})
