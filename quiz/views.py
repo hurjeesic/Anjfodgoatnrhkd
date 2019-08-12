@@ -9,6 +9,28 @@ import random
 problem_num = 20
 
 # Create your views here.
+def temp(request):
+    sensor =
+    {
+        'soilTemp' : request.POST.get('soilTemp', '-40'),
+        'soilHumid' : request.POST.get('soilTemp', '0'),
+        'waterTemp' : request.POST.get('soilTemp', '-1000'),
+        'PH' : request.POST.get('PH', '0'),
+        'voltage' : request.POST.get('voltage', '0')
+    }
+
+    try:
+        migrationData = SensorData(soilTemp=int(sensor['soilTemp']),
+                                   soilHumid=int(sensor['soilHumid']),
+                                   waterTemp=int(sensor['waterTemp']),
+                                   PH=int(sensor['PH']),
+                                   voltage=int(sensor['voltage']))
+        migrationData.save()
+    except:
+        pass
+
+    return render(request, 'quiz/add.html', {})
+
 def index(request):
     return render(request, 'quiz/index.html', {})
 

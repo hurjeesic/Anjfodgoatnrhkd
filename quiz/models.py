@@ -2,6 +2,15 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.
+class SensorData(models.Model):
+    soilTemp = models.IntegerField(default=-40)
+    soilHumid = models.IntegerField(default=0)
+    waterTemp = models.IntegerField(default=-1000)
+    PH = models.IntegerField(default=0)
+    voltage = models.IntegerField(default=0)
+    def __str__(self):
+        return str(self.soilTemp)
+    
 class Example(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     sentence = models.CharField(max_length=100)

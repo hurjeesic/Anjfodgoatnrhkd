@@ -7,4 +7,5 @@ urlpatterns = [
     path('result', views.result, name='result'),
     path('dictionary', views.dictionary, name='dictionary'),
     path('help', views.help, name='help'),
+    path('temp', views.temp, name="temp"),
 ]
